@@ -7,7 +7,7 @@
 
 #include <jansson.h>
 #include <mpolib2/mpo_json.h>
-#include <mpolib2/mpo_misc.h>
+#include <mpolib/mpo_misc.h>
 
 void mpo_json_generic::ThrowInvalidCastException()
 {

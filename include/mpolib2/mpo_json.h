@@ -12,9 +12,9 @@
 #pragma warning (disable:4251)
 #endif
 
-#include "mpo_dll.h"
-#include "mpo_deleter.h"
-#include "mpo_numstr.h"
+#include <mpolib/mpo_dll.h>
+#include <mpolib/mpo_deleter.h>
+#include <mpolib/mpo_numstr.h>
 
 #include <list>
 #include <map>

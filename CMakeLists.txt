@@ -16,6 +16,12 @@ set(lib_dest "${main_lib_dest}/${CMAKE_BUILD_TYPE}")
 # don't look back
 set(CMAKE_CXX_STANDARD 17)
 
+# to build third party dependencies
+add_subdirectory("thirdparty/jansson-2.12")
+
+# include third party support
+add_compile_definitions(HAVE_JANSSON_H)
+
 add_subdirectory("src")
 
 #configure_file(mpojson-config-version.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/mpojson-config-version.cmake @ONLY)
