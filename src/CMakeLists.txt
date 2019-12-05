@@ -14,9 +14,14 @@ set(MPOJSON_SRCS
 
 add_library(mpojson ${MPOJSON_PUBLIC_INCLUDE} ${MPOJSON_SRCS} )
 
-# dependency
+# dependencies
 find_package(mpo 2.0 REQUIRED)
-target_link_libraries(mpojson LINK_PUBLIC mpo)
+target_link_libraries(mpojson PUBLIC mpo)
+
+find_package(jansson REQUIRED)
+
+# NOTE: this does not seem to work
+# target_link_libraries(mpojson INTERFACE jansson)
 
 # to help me figure out what these vars are set to (handy!)
 message("CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
@@ -40,6 +45,7 @@ target_include_directories(mpojson PUBLIC
 		# this will be populated when building but blank when installing
 		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
 
+		# jansson cmake installer may be broken; explicitly adding include path is a workaround
 		"${CMAKE_BINARY_DIR}/thirdparty/jansson-2.12/include")
 
 install(FILES ${MPOLIB_PUBLIC_INCLUDE} DESTINATION "${include_dest}")

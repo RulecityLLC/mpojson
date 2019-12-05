@@ -1,13 +1,6 @@
 #ifndef MPO_JSON_H
 #define MPO_JSON_H
 
-#if defined(HAVE_CONFIG_H) || defined(HAVE_MPOLIB_CONFIG_H)
-#include <mpolib/mpolib_config.h>
-#endif
-
-// only include file if header is available
-#ifdef HAVE_JANSSON_H
-
 #ifdef WIN32
 #pragma warning (disable:4251)
 #endif
@@ -175,8 +168,5 @@ private:
 	MpoJsonGenericSPtr m_RootSPtr;
 	string m_strLastErrorMsg;
 };
-
-
-#endif // HAVE_JANSSON_H
 
 #endif // MPO_JSON_H

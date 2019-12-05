@@ -1,10 +1,3 @@
-#if defined(HAVE_CONFIG_H) || defined(HAVE_MPOLIB_CONFIG_H)
-#include <mpolib/mpolib_config.h>
-#endif
-
-// only include file if header is available
-#ifdef HAVE_JANSSON_H
-
 #include <jansson.h>
 #include <mpolib2/mpo_json.h>
 #include <mpolib/mpo_misc.h>
@@ -419,5 +412,3 @@ string mpo_json::get_last_error_msg()
 {
 	return m_strLastErrorMsg;
 }
-
-#endif // HAVE_JANSSON_H
