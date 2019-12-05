@@ -23,7 +23,7 @@ using namespace std;
 
 // normal test case (all tests will run)
 // TEST is from google test
-#define TEST_CASE(name) TEST(MpoLibTest, name)
+#define TEST_CASE(name) TEST(MpoJsonTest, name)
 
 // exclusive test flag ignored for now
 #define TEST_CASE_EX(name) TEST_CASE(name)

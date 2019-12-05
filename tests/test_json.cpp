@@ -2,8 +2,7 @@
 #define _HAS_STD_BYTE 0
 
 #include "test_headers.h"
-#include "../include/mpolib2/mpo_json.h"
-//#include <mpolib/mpo_json.h>
+#include <mpolib2/mpo_json.h>
 
 void test_json_decode()
 {

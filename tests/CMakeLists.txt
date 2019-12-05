@@ -2,6 +2,7 @@
 #add_compile_definitions(HAVE_MPOLIB_CONFIG_H)
 
 set(TEST_MPOJSON_SRCS
+        main.cpp
         test_json.cpp
         )
 
@@ -24,12 +25,12 @@ if(WIN32)
     if (MSVC)
         # see https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/
         target_compile_options(test_mpojson PUBLIC "/Zc:__cplusplus")
-        target_link_libraries(test_mpojson PUBLIC mpojson mpo gmock)
+        target_link_libraries(test_mpojson PUBLIC mpojson mpo jansson::jansson gmock)
     else()
         # we don't want to have to fiddle around with the GCC windows DLLs, so we have to manually append "-static" to the end
-        target_link_libraries(test_mpojson PUBLIC mpo jansson gmock -static)
+        target_link_libraries(test_mpojson PUBLIC mpojson mpo jansson::jansson gmock -static)
     endif()
 else()
     # we assume in most unix-ish environments that the compiler's runtime is in the PATH (no need to statically link test programs)
-    target_link_libraries(test_mpojson PUBLIC mpo jansson gmock)
+    target_link_libraries(test_mpojson PUBLIC mpojson mpo jansson::jansson gmock)
 endif()
