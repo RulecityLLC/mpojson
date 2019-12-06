@@ -1,5 +1,5 @@
 #include <jansson.h>
-#include <mpolib2/mpo_json.h>
+#include <mpolib/mpo_json.h>
 #include <mpolib/mpo_misc.h>
 
 void mpo_json_generic::ThrowInvalidCastException()
