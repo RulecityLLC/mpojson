@@ -12,8 +12,6 @@ add_executable(test_mpojson ${TEST_MPOJSON_SRCS})
 find_package(mpo 2.0 REQUIRED)
 find_package(jansson REQUIRED)
 
-message("JANSSNO: ${JANSSON_LIBRARIES}")
-
 include_directories("../thirdparty/googletest-release-1.8.1/googlemock/include")
 include_directories("../thirdparty/googletest-release-1.8.1/googletest/include")
 
