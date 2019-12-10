@@ -41,12 +41,13 @@ target_include_directories(mpojson PUBLIC
 
 		# this will be populated when installing but blank when building
 		# for client in install mode
-		$<INSTALL_INTERFACE:include>
+		$<INSTALL_INTERFACE:${include_dest}>
+		$<INSTALL_INTERFACE:${lib_dest}> # for config.h file
 
 		# this will be populated when building but blank when installing
 		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>)
 
-install(FILES ${MPOJSON_PUBLIC_INCLUDE} DESTINATION "${include_dest}")
+install(FILES ${MPOJSON_PUBLIC_INCLUDE} DESTINATION "${include_dest}/mpolib")
 
 # goes into lib_dest so that Debug/Release is taken into account
 install(TARGETS mpojson EXPORT mpojson DESTINATION "${lib_dest}")
