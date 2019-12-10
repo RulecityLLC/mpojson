@@ -1,6 +1,6 @@
 
 # for convenience
-set(header_path "${CMAKE_SOURCE_DIR}/include/mpolib2")
+set(header_path "${CMAKE_SOURCE_DIR}/include/mpolib")
 
 # headers to be installed
 set(MPOJSON_PUBLIC_INCLUDE
@@ -19,6 +19,7 @@ find_package(mpo 2.0 REQUIRED)
 target_link_libraries(mpojson PUBLIC mpo)
 
 find_package(jansson REQUIRED)
+target_link_libraries(mpojson PUBLIC jansson::jansson)
 
 # NOTE: this does not seem to work
 # target_link_libraries(mpojson INTERFACE jansson)
@@ -43,12 +44,9 @@ target_include_directories(mpojson PUBLIC
 		$<INSTALL_INTERFACE:include>
 
 		# this will be populated when building but blank when installing
-		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+		$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>)
 
-		# jansson cmake installer may be broken; explicitly adding include path is a workaround
-		"${CMAKE_BINARY_DIR}/thirdparty/jansson-2.12/include")
-
-install(FILES ${MPOLIB_PUBLIC_INCLUDE} DESTINATION "${include_dest}")
+install(FILES ${MPOJSON_PUBLIC_INCLUDE} DESTINATION "${include_dest}")
 
 # goes into lib_dest so that Debug/Release is taken into account
 install(TARGETS mpojson EXPORT mpojson DESTINATION "${lib_dest}")

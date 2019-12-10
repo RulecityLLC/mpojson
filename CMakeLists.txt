@@ -7,7 +7,7 @@ set(MPOJSON_VERSION_MINOR 0 CACHE STRING "minor version" FORCE)
 set(MPOJSON_VERSION ${MPOJSON_VERSION_MAJOR}.${MPOJSON_VERSION_MINOR} CACHE STRING "version" FORCE)
 
 # from https://foonathan.net/2016/03/cmake-install/
-set(include_dest "include/mpojson-${MPOJSON_VERSION}/mpolib2")
+set(include_dest "include/mpojson-${MPOJSON_VERSION}")
 set(main_lib_dest "lib/mpojson-${MPOJSON_VERSION}")
 
 # for config.h file since it may be different depending on whether we are doing Debug/Release/etc
@@ -25,7 +25,7 @@ add_subdirectory("thirdparty/googletest-release-1.8.1")
 add_subdirectory("src")
 add_subdirectory("tests")
 
-#configure_file(mpojson-config-version.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/mpojson-config-version.cmake @ONLY)
+configure_file(mpojson-config-version.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/mpojson-config-version.cmake @ONLY)
 
-#install(FILES mpojson-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/mpojson-config-version.cmake DESTINATION ${main_lib_dest})
-#install(EXPORT mpojson FILE mpojson.cmake DESTINATION "${lib_dest}")
+install(FILES mpojson-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/mpojson-config-version.cmake DESTINATION ${main_lib_dest})
+install(EXPORT mpojson FILE mpojson.cmake DESTINATION "${lib_dest}")
