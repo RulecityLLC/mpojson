@@ -5,8 +5,6 @@
 // Now we are just a wrapper for Google Test
 #include <gtest/gtest.h>
 
-using namespace std;
-
 #define TEST_CHECK(a)   EXPECT_TRUE(a)
 
 #define TEST_REQUIRE(a) ASSERT_TRUE(a)
