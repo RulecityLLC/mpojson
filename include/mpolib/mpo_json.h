@@ -14,7 +14,11 @@
 #include <string>
 #include <stdexcept>
 
-using namespace std;
+using std::string;
+using std::wstring;
+using std::list;
+using std::map;
+using std::runtime_error;
 
 // object, array, string, number (integer or double), boolean, and null
 typedef enum
