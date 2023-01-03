@@ -12,7 +12,7 @@ pipeline {
 				sh 'rm -rf install'
 				sh 'rm -rf buildJansson'
 				sh 'mkdir buildJansson'
-				sh "cd buildJansson && cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${env.WORKSPACE}/install/jansson ../thirdparty/jansson-2.12/"	
+				sh "cd buildJansson && cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${env.WORKSPACE}/install/jansson -DCMAKE_SYSTEM_NAME=$CMAKE_SYSTEM_NAME -DCMAKE_C_COMPILER=$CMAKE_C_COMPILER -DCMAKE_CXX_COMPILER=$CMAKE_CXX_COMPILER -DCMAKE_AR=$CMAKE_AR -DCMAKE_RANLIB=$CMAKE_RANLIB ../thirdparty/jansson-2.12/"
 				sh 'cd buildJansson && make -j ${MAKE_THREADS} install'
             }
         }
