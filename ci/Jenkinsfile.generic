@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label "${env.JENKINS_AGENT}" }
 
 	environment {
 		CMAKE_BUILD_TYPE='Release'
@@ -17,13 +17,14 @@ pipeline {
             }
         }
         stage('BuildMpoJson') {
-            steps {			
-				copyArtifacts(projectName: 'mpolib2')
+            steps {
+				echo "JENKINS_AGENT_PLATFORM is ${env.JENKINS_AGENT_PLATFORM}"
+				copyArtifacts(projectName: "mpolib2_${env.JENKINS_AGENT_PLATFORM}")
 				sh 'cd install && tar xvfz ../ci/mpolib2Install.tar.gz'
 				sh 'rm -rf build'
-				sh 'mkdir build'				
-				sh "cd build && cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_SYSTEM_PREFIX_PATH=${env.WORKSPACE}/install -DCMAKE_INSTALL_PREFIX=${env.WORKSPACE}/install/mpojson .."
-				sh 'cd build && make -j ${MAKE_THREADS}'
+				sh 'mkdir build'
+				sh "cd build && cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_SYSTEM_PREFIX_PATH=${env.WORKSPACE}/install -DCMAKE_INSTALL_PREFIX=${env.WORKSPACE}/install/mpojson -DCMAKE_SYSTEM_NAME=$CMAKE_SYSTEM_NAME -DCMAKE_C_COMPILER=$CMAKE_C_COMPILER -DCMAKE_CXX_COMPILER=$CMAKE_CXX_COMPILER -DCMAKE_AR=$CMAKE_AR -DCMAKE_RANLIB=$CMAKE_RANLIB .."
+				sh 'cd build && make -j ${MAKE_THREADS} VERBOSE=1'
             }
         }
         stage('Test') {
