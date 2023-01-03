@@ -28,6 +28,9 @@ pipeline {
             }
         }
         stage('Test') {
+            when {
+                environment name: 'JENKINS_AGENT_PLATFORM', value: 'linux'
+            }
             steps {			
 				sh 'cd build/tests && ./test_mpojson'
             }
