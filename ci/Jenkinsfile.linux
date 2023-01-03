@@ -18,7 +18,7 @@ pipeline {
         }
         stage('BuildMpoJson') {
             steps {			
-				copyArtifacts(projectName: 'mpolib2')
+				copyArtifacts(projectName: 'mpolib2_linux')
 				sh 'cd install && tar xvfz ../ci/mpolib2Install.tar.gz'
 				sh 'rm -rf build'
 				sh 'mkdir build'				
