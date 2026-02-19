@@ -10,7 +10,7 @@ This library depends on mpolib2 ( https://github.com/RulecityLLC/mpolib2 ).
 
 ## To build/install
 
-These instructions assume you are installing to '/tmp/cmake_install/mpojson'.  For Windows, you can substitute 'c:\temp\cmake_install' for '/tmp/cmake_install'.
+These instructions assume that all dependencies are already installed to '/tmp/cmake_install' and that you are installing to '/tmp/cmake_install/mpojson'.  For Windows, you can substitute 'c:\temp\cmake_install' for '/tmp/cmake_install'.
 
 ```
 cd thirdparty/jansson-2.12
